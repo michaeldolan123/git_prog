@@ -2,6 +2,83 @@ STID = []
 MAXTEMP = []
 import csv 
 list = ['ARD2', 'BEAV', 'BOIS', 'CENT', 'NRMN', 'STIL', 'TISH', 'TULN', 'WOOD']
+
+class ARD2(object):
+    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
+        self.Tmax = Tmax
+        self.Tmin = Tmin
+        self.wind_speed = wind_speed
+        self.humidity = humidity
+        self.rain_totals = rain_totals
+
+class ARD2(object):
+    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
+        self.Tmax = Tmax
+        self.Tmin = Tmin
+        self.wind_speed = wind_speed
+        self.humidity = humidity
+        self.rain_totals = rain_totals
+
+class ARD2(object):
+    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
+        self.Tmax = Tmax
+        self.Tmin = Tmin
+        self.wind_speed = wind_speed
+        self.humidity = humidity
+        self.rain_totals = rain_totals
+
+class ARD2(object):
+    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
+        self.Tmax = Tmax
+        self.Tmin = Tmin
+        self.wind_speed = wind_speed
+        self.humidity = humidity
+        self.rain_totals = rain_totals
+
+class ARD2(object):
+    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
+        self.Tmax = Tmax
+        self.Tmin = Tmin
+        self.wind_speed = wind_speed
+        self.humidity = humidity
+        self.rain_totals = rain_totals
+
+class ARD2(object):
+    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
+        self.Tmax = Tmax
+        self.Tmin = Tmin
+        self.wind_speed = wind_speed
+        self.humidity = humidity
+        self.rain_totals = rain_totals
+
+class ARD2(object):
+    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
+        self.Tmax = Tmax
+        self.Tmin = Tmin
+        self.wind_speed = wind_speed
+        self.humidity = humidity
+        self.rain_totals = rain_totals
+
+class ARD2(object):
+    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
+        self.Tmax = Tmax
+        self.Tmin = Tmin
+        self.wind_speed = wind_speed
+        self.humidity = humidity
+        self.rain_totals = rain_totals
+
+class ARD2(object):
+    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
+        self.Tmax = Tmax
+        self.Tmin = Tmin
+        self.wind_speed = wind_speed
+        self.humidity = humidity
+        self.rain_totals = rain_totals
+
+
+
+
+
 data = open('/home/mdolan/Desktop/git_prog/BigData2016 (1).csv', newline='') 
 with data as csvfile:
     reader = csv.DictReader(csvfile)
@@ -27,4 +104,4 @@ plt.title('Maximum Temprature At Each Station', fontsize=14)
 plt.xlabel('Station', fontsize=14)
 plt.ylabel('Maximum Temprature', fontsize=14)
 plt.grid(True)
-plt.show()s
+plt.show()
