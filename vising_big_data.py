@@ -1,107 +1,82 @@
-STID = []
-MAXTEMP = []
-import csv 
-list = ['ARD2', 'BEAV', 'BOIS', 'CENT', 'NRMN', 'STIL', 'TISH', 'TULN', 'WOOD']
+import csv
+import matplotlib.pyplot as plt
+# Gathering info from user
+name = input('Hi what is your name? >')
+print()
+print(f'Hi {name} lets look at some weather data.')
 
-class ARD2(object):
-    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
-        self.Tmax = Tmax
-        self.Tmin = Tmin
-        self.wind_speed = wind_speed
-        self.humidity = humidity
-        self.rain_totals = rain_totals
-
-class ARD2(object):
-    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
-        self.Tmax = Tmax
-        self.Tmin = Tmin
-        self.wind_speed = wind_speed
-        self.humidity = humidity
-        self.rain_totals = rain_totals
-
-class ARD2(object):
-    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
-        self.Tmax = Tmax
-        self.Tmin = Tmin
-        self.wind_speed = wind_speed
-        self.humidity = humidity
-        self.rain_totals = rain_totals
-
-class ARD2(object):
-    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
-        self.Tmax = Tmax
-        self.Tmin = Tmin
-        self.wind_speed = wind_speed
-        self.humidity = humidity
-        self.rain_totals = rain_totals
-
-class ARD2(object):
-    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
-        self.Tmax = Tmax
-        self.Tmin = Tmin
-        self.wind_speed = wind_speed
-        self.humidity = humidity
-        self.rain_totals = rain_totals
-
-class ARD2(object):
-    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
-        self.Tmax = Tmax
-        self.Tmin = Tmin
-        self.wind_speed = wind_speed
-        self.humidity = humidity
-        self.rain_totals = rain_totals
-
-class ARD2(object):
-    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
-        self.Tmax = Tmax
-        self.Tmin = Tmin
-        self.wind_speed = wind_speed
-        self.humidity = humidity
-        self.rain_totals = rain_totals
-
-class ARD2(object):
-    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
-        self.Tmax = Tmax
-        self.Tmin = Tmin
-        self.wind_speed = wind_speed
-        self.humidity = humidity
-        self.rain_totals = rain_totals
-
-class ARD2(object):
-    def __init__(self, Tmax, Tmin, wind_speed, humidity, rain_totals):
-        self.Tmax = Tmax
-        self.Tmin = Tmin
-        self.wind_speed = wind_speed
-        self.humidity = humidity
-        self.rain_totals = rain_totals
-
-
-
-
-
-data = open('/home/mdolan/Desktop/git_prog/BigData2016 (1).csv', newline='') 
+stations = ['ALTU', 'BEAV', 'NRMN', 'TISH', 'TULN']
+print()
+datas = input('what data do you want to see; ie: TMAX, TMIN, WSMX, HAVG, WSMN, RAIN. >')
+print()
+time = input('what time period like month or whole year; ie: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, all. >')
+# Seting var
+stored_data = []
+day = []
+alt =[]
+bev = []
+nmn = []
+tsh = []
+tul = []
+dayas = []
+# Gatering data from file\
+keeptrack = 0
+data = open('/home/mdolan/Desktop/git_prog/2016VizData (3).csv', newline='') 
 with data as csvfile:
     reader = csv.DictReader(csvfile)
     station_list = []
-    for part in list:
-        maxes = -996.0
-        mins = 996.0
-        data.seek(0)
-        for num in reader:
-            if num['STID'] == part:
-                if float(num['TMAX']) != 996.00 and float(num['TMAX']) != -996.00:
-                    if float(num['TMAX']) > maxes:
-                        maxes = float(num['TMAX'])
-                    if float(num['TMIN']) < mins:
-                        mins = float(num['TMIN'])
-        print(f'{part}; max:{maxes}, min:{mins}.')
-        STID.append(part)
-        MAXTEMP.append(maxes)
-        
-import matplotlib.pyplot as plt
-plt.plot(STID, MAXTEMP, color='blue', marker='X')
-plt.title('Maximum Temprature At Each Station', fontsize=14)
-plt.xlabel('Station', fontsize=14)
-plt.ylabel('Maximum Temprature', fontsize=14)
+    for row in reader:
+        for station in stations:
+            if row['STID'] == station:
+                if float(row['TMIN']) != -996.00 and float(row['TMAX']) != -996.00:
+                    if row['MONTH'] == time:
+                        if row['STID'] == 'ALTU':
+                            alt.append(row[datas])
+                            keeptrack += 1
+                            dayas.append(keeptrack)
+                        if row['STID'] == 'BEAV':
+                            bev.append(row[datas])                           
+                        if row['STID'] == 'NRMN':
+                            nmn.append(row[datas])
+                        if row['STID'] == 'TISH':
+                            tsh.append(row[datas])
+                        if row['STID'] == 'TULN':
+                            tul.append(row[datas])
+                    if time == 'all':
+                        if row['STID'] == 'ALTU':
+                            alt.append(row[datas])
+                            keeptrack += 1
+                            dayas.append(keeptrack)
+                        if row['STID'] == 'BEAV':
+                            bev.append(row[datas])                           
+                        if row['STID'] == 'NRMN':
+                            nmn.append(row[datas])
+                        if row['STID'] == 'TISH':
+                            tsh.append(row[datas])
+                        if row['STID'] == 'TULN':
+                            tul.append(row[datas])  
+nmn.append(0)
+nmn.append(0)
+nmn.append(0)
+nmn.append(0)
+nmn.append(0)
+nmn.append(0)
+tul.append(0)
+tul.append(0)
+tul.append(0)
+tul.append(0)
+tul.append(0)
+tul.append(0)
+print(nmn)
+print(dayas)                    
+plt.plot(dayas, alt, color='red', marker='o')
+plt.plot(dayas, bev, color='blue', marker='o')
+plt.plot(dayas, nmn, color='green', marker='o')
+plt.plot(dayas, tsh, color='yellow', marker='o')
+plt.plot(dayas, tul, color='purple', marker='o')
+plt.title(f'the stations {datas} data for month {time}', fontsize=14)
+plt.xlabel('DAY', fontsize=14)
+plt.ylabel(f'{datas}', fontsize=14)
 plt.grid(True)
+plt.legend(['ALTU', 'BEAV', 'NRMN', 'TISH', 'TULN'], loc='upper left')
 plt.show()
