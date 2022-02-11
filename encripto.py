@@ -6,7 +6,6 @@ from pyparsing import Word
 
 abet = 'abcdefghijklmnopqrstuvwxyz0'
 split_abet  = list(abet)
-print(split_abet)
 true = 'T'
 keep_track = 0
 
@@ -41,7 +40,7 @@ while True:
     key = input('what is the key ie: 1, 2, 3, ... 23, 24, or 25? >')
     if key.isnumeric():
         key = int(key)
-        if key >= 1 and key <= 27:
+        if key >= 1 and key <= 25:
             break
         else:
             print('You inputed a wrong value.')
@@ -56,8 +55,8 @@ if en_or_de == 'e':
             keep_track += 1
             if i == z:
                 a = keep_track + key - 1
-                if a > 27:
-                    a -= 26
+                if a > 26:
+                    a -= 27
                 en_word.append(split_abet[a])
 
 if en_or_de == 'd':
@@ -67,13 +66,11 @@ if en_or_de == 'd':
             keep_track += 1
             if i == z:
                 a = keep_track - key - 1
-                if a <= 0:
+                if a < 0:
                     a += 27
-                    print(a)
                 en_word.append(split_abet[a])
 new_word = ''
 keep_track = -1
-print(en_word)
 for i in en_word:
     if i == '0':
         new_word += ' '
