@@ -28,47 +28,36 @@ with data as csvfile:
     for row in reader:
         for station in stations:
             if row['STID'] == station:
-                if float(row['TMIN']) != -996.00 and float(row['TMAX']) != -996.00:
-                    if row['MONTH'] == time:
-                        if row['STID'] == 'ALTU':
-                            alt.append(row[datas])
-                            keeptrack += 1
-                            dayas.append(keeptrack)
-                        if row['STID'] == 'BEAV':
-                            bev.append(row[datas])                           
-                        if row['STID'] == 'NRMN':
-                            nmn.append(row[datas])
-                        if row['STID'] == 'TISH':
-                            tsh.append(row[datas])
-                        if row['STID'] == 'TULN':
-                            tul.append(row[datas])
-                    if time == 'all':
-                        if row['STID'] == 'ALTU':
-                            alt.append(row[datas])
-                            keeptrack += 1
-                            dayas.append(keeptrack)
-                        if row['STID'] == 'BEAV':
-                            bev.append(row[datas])                           
-                        if row['STID'] == 'NRMN':
-                            nmn.append(row[datas])
-                        if row['STID'] == 'TISH':
-                            tsh.append(row[datas])
-                        if row['STID'] == 'TULN':
-                            tul.append(row[datas])  
-nmn.append(0)
-nmn.append(0)
-nmn.append(0)
-nmn.append(0)
-nmn.append(0)
-nmn.append(0)
-tul.append(0)
-tul.append(0)
-tul.append(0)
-tul.append(0)
-tul.append(0)
-tul.append(0)
-print(nmn)
-print(dayas)                    
+                if float(row['TMIN']) == -996.00 and float(row['TMAX']) == -996.00:
+                    (row['TMIN']) = 0
+                    (row['TMAX']) = 0
+                if row['MONTH'] == time:
+                    if row['STID'] == 'ALTU':
+                        alt.append(row[datas])
+                        keeptrack += 1
+                        dayas.append(keeptrack)
+                    if row['STID'] == 'BEAV':
+                        bev.append(row[datas])                           
+                    if row['STID'] == 'NRMN':
+                        nmn.append(row[datas])
+                    if row['STID'] == 'TISH':
+                        tsh.append(row[datas])
+                    if row['STID'] == 'TULN':
+                        tul.append(row[datas])
+                if time == 'all':
+                    if row['STID'] == 'ALTU':
+                        alt.append(row[datas])
+                        keeptrack += 1
+                        dayas.append(keeptrack)
+                    if row['STID'] == 'BEAV':
+                        bev.append(row[datas])                           
+                    if row['STID'] == 'NRMN':
+                        nmn.append(row[datas])
+                    if row['STID'] == 'TISH':
+                        tsh.append(row[datas])
+                    if row['STID'] == 'TULN':
+                        tul.append(row[datas]) 
+                    
 plt.plot(dayas, alt, color='red', marker='o')
 plt.plot(dayas, bev, color='blue', marker='o')
 plt.plot(dayas, nmn, color='green', marker='o')
