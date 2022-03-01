@@ -2,7 +2,7 @@ from random import shuffle
 from xxlimited import new
 
 
-suites = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '11']
+suites = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', 'a']
 deck_of_cards = []
 
 for card in suites:
@@ -17,23 +17,13 @@ for card in deck_of_cards:
     for number in range(how_many_decks):
         shuffle_hand.append(card)
 
-def stat_of_deck(deck):
+def stat_of_deck(deck, deal1c, use1c, use2c):
     new_deck = deck
     user_points = 0
     dealer_points = 0
-    no_ones_points = 0
-    for user_card1 in new_deck:
-        for user_card2 in new_deck:
-            for dealer_card1 in new_deck:
-                for dealer_card2 in new_deck:
-                    if int(user_card1) + int(user_card2) == int(dealer_card1) + int(dealer_card2):
-                        no_ones_points += 1
-                    if int(user_card1) + int(user_card2) >= int(dealer_card1) + int(dealer_card2):
-                        user_points += 1
-                    if int(user_card1) + int(user_card2) <= int(dealer_card1) + int(dealer_card2):
-                        dealer_points += 1
-    total_points = user_points + dealer_points + no_ones_points
-    
+    for card in deck:
+        
+stat_of_deck(shuffle_hand)
 
 
 
