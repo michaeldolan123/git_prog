@@ -29,7 +29,7 @@ def stat_of_deck(deck, deal1c, use1c, use2c):
     dealer_odds = 0
     for card in deck:
         if card == 'a':
-            if int(deal1c) + 11 > user_points:
+            if int(deal1c) + 11 > 22 and user_points:
                 dealer_odds += 1
             if int(deal1c) + 11 < user_points:
                 user_odds += 1
