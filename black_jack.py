@@ -1,3 +1,6 @@
+from mimetypes import init
+
+
 neglist = ['10', 'a']
 poslist = ['2', '3', '4', '5', '6']
 
@@ -32,8 +35,25 @@ def high_low(card):
     final_count = final_count * 100
     return final_count
 
-def mod_basic_strat(user1, user2, user_spair, dealer):
-    
+def mod_basic_strat(user1, user2, dealer):
+    global user_points
+    global dealer_points
+    global shuffle_hand
+    user_points = 0
+    dealer_points = 0
+    for card in shuffle_hand:
+        if card == 'a':
+            if dealer == 'a':
+                dealer_posable = 1
+            else:
+                dealer_posable = 11
+        else:
+            dealer_posable = card
+        if int(user1) + int(user2) > int(dealer) + int(dealer_posable) and int(user1) + int(user2) <= 21 and int(dealer) + int(dealer_posable) <= 21:
+            user_points += 1
+        if int(user1) + int(user2) < int(dealer) + int(dealer_posable) and int(user1) + int(user2) <= 21 and int(dealer) + int(dealer_posable) <= 21:
+            dealer_points += 1
+            
 
 while True:
     dealer_1st_card = input('What is the dealers first card? >')
@@ -57,8 +77,16 @@ while True:
             print(high_low(user_second_card))
             break
     
-    if user_first_card == 'a' and user_second_card != 'a' and dealer_1st_card != 'a':
+    if user_first_card == 'a' and user_second_card != 'a':
+        mod_basic_strat(11, user_second_card, dealer_1st_card)
+    if user_first_card != 'a' and user_second_card == 'a':
+        mod_basic_strat(user_first_card, 11, dealer_1st_card)
+    if user_first_card == 'a' and user_second_card == 'a':
+        mod_basic_strat(11, 1, dealer_1st_card)
+    else:
+        mod_basic_strat(user_first_card, user_second_card, dealer_1st_card)
+    print('--------------')
+    print(user_points / dealer_points)
+    print('--------------')
 
-
-
-    
+        
