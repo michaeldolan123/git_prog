@@ -5,7 +5,7 @@ neglist = ['10', 'a']
 poslist = ['2', '3', '4', '5', '6']
 
 count = 0
-suites = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', 'a']
+suites = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '11']
 deck_of_cards = []
 
 for card in suites:
@@ -21,6 +21,7 @@ for card in deck_of_cards:
         shuffle_hand.append(card)
 
 card_in_deck = how_many_decks * 52
+
 
 def high_low(card):
     global count
@@ -42,21 +43,21 @@ def mod_basic_strat(user1, user2, dealer):
     user_points = 0
     dealer_points = 0
     for card in shuffle_hand:
-        if card == 'a':
-            if dealer == 'a':
-                dealer_posable = 1
-            else:
-                dealer_posable = 11
-        else:
-            dealer_posable = card
+        dealer_posable = card
         if int(user1) + int(user2) > int(dealer) + int(dealer_posable) and int(user1) + int(user2) <= 21 and int(dealer) + int(dealer_posable) <= 21:
             user_points += 1
         if int(user1) + int(user2) < int(dealer) + int(dealer_posable) and int(user1) + int(user2) <= 21 and int(dealer) + int(dealer_posable) <= 21:
             dealer_points += 1
+        if int(user1) + int(user2) > 21 and int(dealer) + int(dealer_posable) <= 21:
+            dealer_points += 1
+        if int(user1) + int(user2) <= 21 and int(dealer) + int(dealer_posable) > 21:
+            user_points += 1
             
 
 while True:
     dealer_1st_card = input('What is the dealers first card? >')
+    if dealer_1st_card == 'a':
+        dealer_points = 11
     for card in shuffle_hand:
         if card == dealer_1st_card:
             shuffle_hand.remove(card)
@@ -64,6 +65,8 @@ while True:
             break
 
     user_first_card = input('What is your first card? >')
+    if user_first_card == 'a':
+        user_first_card = 11
     for card in shuffle_hand:
         if card == user_first_card:
             shuffle_hand.remove(card)
@@ -71,22 +74,17 @@ while True:
             break
 
     user_second_card = input('What is your second card? >')
+    if user_second_card == 'a':
+        user_second_card = 11
     for card in shuffle_hand:
         if card == user_second_card:
             shuffle_hand.remove(card)
             print(high_low(user_second_card))
             break
     
-    if user_first_card == 'a' and user_second_card != 'a':
-        mod_basic_strat(11, user_second_card, dealer_1st_card)
-    if user_first_card != 'a' and user_second_card == 'a':
-        mod_basic_strat(user_first_card, 11, dealer_1st_card)
-    if user_first_card == 'a' and user_second_card == 'a':
-        mod_basic_strat(11, 1, dealer_1st_card)
-    else:
-        mod_basic_strat(user_first_card, user_second_card, dealer_1st_card)
+    mod_basic_strat(user_first_card, user_second_card, dealer_1st_card)
     print('--------------')
-    print(user_points / dealer_points)
+    print(f'{user_points}/{dealer_points}')
     print('--------------')
 
         
