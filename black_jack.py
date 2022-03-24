@@ -53,7 +53,6 @@ def mod_basic_strat(user1, user2, dealer):
         if int(user1) + int(user2) <= 21 and int(dealer) + int(dealer_posable) > 21:
             user_points += 1
             
-
 while True:
     dealer_1st_card = input('What is the dealers first card? >')
     if dealer_1st_card == 'a':
@@ -86,5 +85,3 @@ while True:
     print('--------------')
     print(f'{user_points}/{dealer_points}')
     print('--------------')
-
-        
