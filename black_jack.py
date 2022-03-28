@@ -46,17 +46,22 @@ def mod_basic_strat(user1, user2, dealer):
         dealer_posable = card
         if int(user1) + int(user2) > int(dealer) + int(dealer_posable) and int(user1) + int(user2) <= 21 and int(dealer) + int(dealer_posable) <= 21:
             user_points += 1
+            print('1')
         if int(user1) + int(user2) < int(dealer) + int(dealer_posable) and int(user1) + int(user2) <= 21 and int(dealer) + int(dealer_posable) <= 21:
             dealer_points += 1
+            print('2')
         if int(user1) + int(user2) > 21 and int(dealer) + int(dealer_posable) <= 21:
             dealer_points += 1
+            print('3')
         if int(user1) + int(user2) <= 21 and int(dealer) + int(dealer_posable) > 21:
             user_points += 1
+            print('4')
             
 while True:
     dealer_1st_card = input('What is the dealers first card? >')
     if dealer_1st_card == 'a':
         dealer_points = 11
+        dealer_1st_card = 11
     for card in shuffle_hand:
         if card == dealer_1st_card:
             shuffle_hand.remove(card)
@@ -83,5 +88,5 @@ while True:
     
     mod_basic_strat(user_first_card, user_second_card, dealer_1st_card)
     print('--------------')
-    print(f'{user_points}/{dealer_points}')
+    print(f'{user_points}{dealer_points}')
     print('--------------')
