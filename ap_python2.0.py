@@ -15,11 +15,15 @@ def odds(user1, user2, user_spair, deal1, deal_other):
     negative_odds = 0
     while True:
         if int(user1) + int(user2) == 21:
+            print('good job')
             break
         for card in deck:
             if int(user1) + int(user2) + int(card) <= 21:
                 positive_odds += 1
-            else:
+            if card == '11' and int(user1) + int(user2) + int(card) > 21:
+                if int(user1) + int(user2) + 11 <= 21:
+                    positive_odds += 1
+            if card != '11' and int(user1) + int(user2) + int(card) > 21:
                 negative_odds += 1
         sum = negative_odds + positive_odds
         print(f'you have a {negative_odds / sum * 100}% chance of busting')
