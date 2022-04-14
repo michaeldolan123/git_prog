@@ -1,12 +1,15 @@
+# setting lists
 suites = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '10', '10', '10', '11']
 deck = []
 spair_deck = []
 
+#making the deck of cards
 how_many_decks = int(input('How many decks are you using? >')) * 4
 for card in suites:
     for num in range(how_many_decks):
         deck.append(card)
 
+#checking the odds of winning or losing
 def odds(user1, user2, user_spair, deal1, deal_other):
     deck.remove(user1)
     deck.remove(user2)
@@ -14,10 +17,12 @@ def odds(user1, user2, user_spair, deal1, deal_other):
     positive_odds = 0
     negative_odds = 0
     while True:
+        #if user gets 21 on there draw they get a black jack and win automaticly
         if int(user1) + int(user2) == 21:
             print('good job')
             break
         for card in deck:
+            #adding ever card to the hand
             if int(user1) + int(user2) + int(card) <= 21:
                 positive_odds += 1
             if card == '11' and int(user1) + int(user2) + int(card) > 21:
